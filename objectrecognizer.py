@@ -1,4 +1,6 @@
 import cv2
+import numpy as np
+
 from matplotlib import pyplot as plt
 
 
@@ -145,15 +147,108 @@ from matplotlib import pyplot as plt
 
 # Crop an Image:-
 
-img = cv2.imread("home.jpg")
-cv2.imshow("Original Image", img)
+# img = cv2.imread("home.jpg")
+# cv2.imshow("Original Image", img)
+#
+# cropped_image = img[0:400, 0:400]
+#
+# cv2.imshow("cropped", cropped_image)
 
-cropped_image = img[0:400, 0:400]
+# Sharpen the Image:-
 
-cv2.imshow("cropped", cropped_image)
+# img = cv2.imread("home.jpg")
+# kernel = np.array([[-1, -1, -1],
+#                    [-1, 9, -1],
+#                    [-1, -1, -1]])
+#
+# sharpened = cv2.filter2D(img, -1, kernel)
+# cv2.imshow('Original Image', img)
+# cv2.imshow('Image Sharpening', sharpened)
 
+# Apply an Identity Filter  on an Image:-
+#
+# img = cv2.imread("home.jpg")
+# kernel = np.array([[0, 0, 0],
+#                    [0, 1, 0],
+#                    [0, 0, 0]])
+#
+# identity = cv2.filter2D(img, -1, kernel)
+# cv2.imshow('Identity Filter', identity)
+# cv2.imshow('Original Image', img)
 
+# Apply Gaussian Filter  on an Image:-
 
+# img = cv2.imread('home.jpg')
+# Gaussian_Filter = cv2.GaussianBlur(img, (5, 5), cv2.BORDER_DEFAULT)
+#
+# cv2.imshow("Original Image", img)
+# cv2.imshow('Gaussian_Filter Image', Gaussian_Filter)
+
+# Apply Median Filter  on an Image:-
+
+# ReadImg = cv2.imread('home.jpg')
+# Median_Filter = cv2.medianBlur(ReadImg, 5)
+# cv2.imshow("Original Image", ReadImg)
+# cv2.imshow('Median Filter Image', Median_Filter)
+
+# Apply Average Filter  on an Image:-
+#
+# img = cv2.imread('home.jpg')
+# blur_Img = cv2.blur(img, (5, 5))
+#
+# cv2.imshow("Original Image", img)
+# cv2.imshow('blurred image', blur_Img)
+
+# Draw Histogram of an Image:-
+
+# img = cv2.imread('home.jpg')
+# histogram = cv2.calcHist([img], [0], None, [256], [0, 256])
+#
+# plt.plot(histogram)
+# plt.show()
+# Perform x-Negative of an Image:-
+
+# img = cv2.imread('home.jpg')
+# img_neg = 1 - img
+#
+# cv2.imshow("Original Image", img)
+# cv2.imshow("Negative Image", img_neg)
+
+# Perform Thersholding of an Image:-
+
+# img = cv2.imread('home.jpg')
+# gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+#
+# ret, thresh1 = cv2.threshold(img, 120, 255, cv2.THRESH_BINARY)
+# ret, thresh2 = cv2.threshold(img, 120, 255, cv2.THRESH_BINARY_INV)
+# ret, thresh3 = cv2.threshold(img, 120, 255, cv2.THRESH_TRUNC)
+# ret, thresh4 = cv2.threshold(img, 120, 255, cv2.THRESH_TOZERO)
+# ret, thresh5 = cv2.threshold(img, 120, 255, cv2.THRESH_TOZERO_INV)
+#
+# cv2.imshow('Binary Threshold', thresh1)
+# cv2.imshow('Binary Threshold Inverted', thresh2)
+# cv2.imshow('Truncated Threshold', thresh3)
+# cv2.imshow('Set to 0', thresh4)
+# cv2.imshow('Set to 0 Inverted', thresh5)
+
+# Apply Log Transformation on an Image:-
+
+# img = cv2.imread('home.jpg')
+# c = 255 / np.log(1 + np.max(img))
+# log_image = c * (np.log(img + 1))
+#
+# log_image = np.array(log_image, dtype = np.uint8)
+#
+# cv2.imshow("Original Image", img)
+# cv2.imshow("Log Transformed Image", log_image)
+
+# Apply Power Law Transformation on an Image:-
+
+# img = cv2.imread('home.jpg')
+#
+# gamma_corrected = np.array(255 * (img / 255) ** 2.2, dtype='uint8')
+#
+# cv2.imshow('gamma_transformed', gamma_corrected)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
